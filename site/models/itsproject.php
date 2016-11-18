@@ -30,9 +30,19 @@ class ITSProjectModelITSProject extends JModelItem
 	public function getMsg()
 	{
 		if (!isset($this->message))
-		{
-			$this->message = 'ITSProject This String from Model';
-		}
+			$jinput = JFactory::getApplication()->input;
+			$id     = $jinput->get('id', 1, 'INT');
+ 
+			switch ($id)
+			{
+				case 2:
+					$this->message = 'Good bye ITS!';
+					break;
+				default:
+				case 1:
+					$this->message = 'Hello ITS!';
+					break;
+			}
  
 		return $this->message;
 	}
