@@ -3,17 +3,16 @@
 	<layout title="COM_ITSPROJECT_ITSPROJECT_VIEW_DEFAULT_TITLE">
 		<message>COM_ITSPROJECT_ITSPROJECT_VIEW_DEFAULT_DESC</message>
 	</layout>
-	<fields name="request">
+	<fields
+			name="request"
+			addfieldpath="/administrator/components/com_itsproject/models/fields"
 		<fieldset name="request">
 			<field
 					name="id"
-					type="list"
-					label="COM_ITSPROJECT_ITSPROJECT_FIELD_GREETING_LABEL"
-					description="COM_ITSPROJECT_ITSPROJECT_FIELD_GREETING_DESC"
-					default="1">
-                                <option value="1">Hello ITS!</option>
-                                <option value="2">Good bye ITS!</option>
-                        </field>
+					type="itsproject"
+					label="COM_ITSPROJECT_ITSPROJECT_FIELD_NAME_LABEL"
+					description="COM_ITSPROJECT_ITSPROJECT_FIELD_NAME_DESC"
+					/>
 		</fieldset>
 	</fields>
 </metadata>
