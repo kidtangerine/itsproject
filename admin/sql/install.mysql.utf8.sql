@@ -12,4 +12,4 @@ CREATE TABLE `#__itsproject` (
  
 INSERT INTO `#__itsproject` (`name`) VALUES
 ('Adding Internet Project came from db'),
-('Deleting Internet Project came from d');
+('Deleting Internet Project came from db');
