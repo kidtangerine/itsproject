@@ -10,7 +10,7 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 ?>
-<form action="index.php?option=com_itsproject&view=itsproejcts" method="post" id="adminForm" name="adminForm">
+<form action="index.php?option=com_itsproject&view=itsprojects" method="post" id="adminForm" name="adminForm">
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>
@@ -40,7 +40,7 @@ defined('_JEXEC') or die('Restricted Access');
 			<?php if (!empty($this->items)) : ?>
 				<?php foreach ($this->items as $i => $row) : 
 				
-				$link = JRoute::_('index.php?option=com_itsproject&task=itsproejct.edit&id=' . $row->id);
+				$link = JRoute::_('index.php?option=com_itsproject&task=itsproject.edit&id=' . $row->id);
 				?>
 				
  
