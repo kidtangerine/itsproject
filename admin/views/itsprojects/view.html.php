@@ -11,12 +11,19 @@
 defined('_JEXEC') or die('Restricted access');
  
 /**
- * ITSProjects View
+ * ITSProject View
  *
  * @since  0.0.1
  */
-class ITSProjectViewITSProjects extends JViewLegacy
+class ITSProjectViewITSProject extends JViewLegacy
 {
+	/**
+	 * View form
+	 *
+	 * @var         form
+	 */
+	protected $form = null;
+ 
 	/**
 	 * Display the ITSProject view
 	 *
@@ -24,11 +31,11 @@ class ITSProjectViewITSProjects extends JViewLegacy
 	 *
 	 * @return  void
 	 */
-	function display($tpl = null)
+	public function display($tpl = null)
 	{
-		// Get data from the model
-		$this->items		= $this->get('Items');
-		$this->pagination	= $this->get('Pagination');
+		// Get the Data
+		$this->form = $this->get('Form');
+		$this->item = $this->get('Item');
  
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -38,7 +45,44 @@ class ITSProjectViewITSProjects extends JViewLegacy
 			return false;
 		}
  
+ 
+		// Set the toolbar
+		$this->addToolBar();
+ 
 		// Display the template
 		parent::display($tpl);
+	}
+ 
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function addToolBar()
+	{
+		$input = JFactory::getApplication()->input;
+ 
+		// Hide Joomla Administrator Main menu
+		$input->set('hidemainmenu', true);
+ 
+		$isNew = ($this->item->id == 0);
+ 
+		if ($isNew)
+		{
+			$title = JText::_('COM_ITSPROJECT_MANAGER_ITSPROJECT_NEW');
+		}
+		else
+		{
+			$title = JText::_('COM_ITSPROJECT_MANAGER_ITSPROJECT_EDIT');
+		}
+ 
+		JToolBarHelper::title($title, 'itsproject');
+		JToolBarHelper::save('itsproject.save');
+		JToolBarHelper::cancel(
+			'itsproject.cancel',
+			$isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE'
+		);
 	}
 }
