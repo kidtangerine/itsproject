@@ -15,27 +15,33 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class ITSProjectViewITSProject extends JViewLegacy
+class ITSProjectViewITSProjects extends JViewLegacy
 {
 	/**
-	 * View form
-	 *
-	 * @var         form
-	 */
-	protected $form = null;
- 
-	/**
-	 * Display the ITSProject view
+	 * Displa
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
 	 * @return  void
 	 */
-	public function display($tpl = null)
+	function display($tpl = null)
 	{
-		// Get the Data
-		$this->form = $this->get('Form');
-		$this->item = $this->get('Item');
+		
+		// Get application
+		$app = JFactory::getApplication();
+		$context = "itsproject.list.admin.itsproject";
+
+		// Get data from the model
+		
+		//print_r($this);
+		//var_dump($this);
+		$this->items		= $this->get('Items');
+		$this->pagination	= $this->get('Pagination');
+				$this->state			= $this->get('State');
+		$this->filter_order 	= $app->getUserStateFromRequest($context.'filter_order', 'filter_order', 'greeting', 'cmd');
+		$this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');
+		$this->filterForm    	= $this->get('FilterForm');
+		$this->activeFilters 	= $this->get('ActiveFilters');
  
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -45,12 +51,15 @@ class ITSProjectViewITSProject extends JViewLegacy
 			return false;
 		}
  
- 
 		// Set the toolbar
 		$this->addToolBar();
  
 		// Display the template
 		parent::display($tpl);
+		
+		
+		// Set the document
+		$this->setDocument();
 	}
  
 	/**
@@ -62,27 +71,27 @@ class ITSProjectViewITSProject extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		$input = JFactory::getApplication()->input;
+		$title = JText::_('COM_ITSPROJECT_MANAGER_ITSPROJECTS');
  
-		// Hide Joomla Administrator Main menu
-		$input->set('hidemainmenu', true);
- 
-		$isNew = ($this->item->id == 0);
- 
-		if ($isNew)
+		if ($this->pagination->total)
 		{
-			$title = JText::_('COM_ITSPROJECT_MANAGER_ITSPROJECT_NEW');
-		}
-		else
-		{
-			$title = JText::_('COM_ITSPROJECT_MANAGER_ITSPROJECT_EDIT');
+			$title .= "<span style='font-size: 0.5em; vertical-align: middle;'>(" . $this->pagination->total . ")</span>";
 		}
  
 		JToolBarHelper::title($title, 'itsproject');
-		JToolBarHelper::save('itsproject.save');
-		JToolBarHelper::cancel(
-			'itsproject.cancel',
-			$isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE'
-		);
+		JToolBarHelper::deleteList('', 'itsprojects.delete');
+		JToolBarHelper::editList('itsproject.edit');
+		JToolBarHelper::addNew('itsproject.add');
 	}
+	/**
+	 * Method to set up the document properties
+	 *
+	 * @return void
+	 */
+	protected function setDocument() 
+	{
+		$document = JFactory::getDocument();
+		$document->setTitle(JText::_('COM_ITSPROJECT_ADMINISTRATION'));
+	}
+}
 }
