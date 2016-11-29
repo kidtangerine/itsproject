@@ -10,7 +10,7 @@
 	<copyright>Copyright Info</copyright>
 	<license>License Info</license>
 	<!--  The version string is recorded in the components table -->
-	<version>0.0.9</version>
+	<version>0.0.10</version>
 	<!-- The description is optional and defaults to the name -->
 	<description>Description of the ITSProject component ...</description>
  <install> <!-- Runs on install -->
@@ -40,10 +40,17 @@
 		<folder>views</folder>
 		<folder>models</folder>
 	</files>
+	<languages folder="site/language">
+		<language tag="en-GB">en-GB/en-GB.com_itsproject.ini</language>
+        </languages>
+ <media destination="com_itsproject" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+	</media>
  
 	<administration>
 		<!-- Administration Menu Section -->
-		<menu link='index.php?option=com_itsproject'>ITSProject</menu>
+		<menu link='index.php?option=com_itsproject' img="../media/com_itsproject/images/Tux-16x16.png">COM_ITSPROJECT_MENU</menu>
 		<!-- Administration Main File Copy Section -->
 		<!-- Note the folder attribute: This attribute describes the folder
 			to copy FROM in the package to install therefore files copied
@@ -61,7 +68,7 @@
 			<folder>models</folder>
 			<!-- views files section -->
 			<folder>views</folder>
-					<folder>controllers</folder>
+		<folder>controllers</folder>
 		</files>
 		<languages folder="admin/language">
         		<language tag="en-GB">en-GB/en-GB.com_itsproject.ini</language>
