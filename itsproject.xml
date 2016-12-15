@@ -50,7 +50,7 @@
  
 	<administration>
 		<!-- Administration Menu Section -->
-		<menu link='index.php?option=com_itsproject' img="../media/com_itsproject/images/Tux-16x16.png">COM_ITSPROJECT_MENU</menu>
+		<menu link='index.php?option=com_itsproject'>COM_ITSPROJECT_MENU</menu>
 		<!-- Administration Main File Copy Section -->
 		<!-- Note the folder attribute: This attribute describes the folder
 			to copy FROM in the package to install therefore files copied

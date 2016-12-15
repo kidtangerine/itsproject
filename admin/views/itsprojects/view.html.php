@@ -27,9 +27,7 @@ class ITSProjectViewITSProjects extends JViewLegacy
 	function display($tpl = null)
 	{
 		
-		// Get application
-		$app = JFactory::getApplication();
-		$context = "itsproject.list.admin.itsproject";
+		
 
 		// Get data from the model
 		
@@ -38,10 +36,7 @@ class ITSProjectViewITSProjects extends JViewLegacy
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
 				$this->state			= $this->get('State');
-		$this->filter_order 	= $app->getUserStateFromRequest($context.'filter_order', 'filter_order', 'name', 'cmd');
-		$this->filter_order_Dir = $app->getUserStateFromRequest($context.'filter_order_Dir', 'filter_order_Dir', 'asc', 'cmd');
-		$this->filterForm    	= $this->get('FilterForm');
-		$this->activeFilters 	= $this->get('ActiveFilters');
+		
  
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -71,12 +66,7 @@ class ITSProjectViewITSProjects extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		$title = JText::_('COM_ITSPROJECT_MANAGER_ITSPROJECTS');
- 
-		if ($this->pagination->total)
-		{
-			$title .= "<span style='font-size: 0.5em; vertical-align: middle;'>(" . $this->pagination->total . ")</span>";
-		}
+		
  
 		JToolBarHelper::title($title, 'itsproject');
 		JToolBarHelper::deleteList('', 'itsprojects.delete');
@@ -88,10 +78,6 @@ class ITSProjectViewITSProjects extends JViewLegacy
 	 *
 	 * @return void
 	 */
-	protected function setDocument() 
-	{
-		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_ITSPROJECT_ADMINISTRATION'));
-	}
+	
 }
 }

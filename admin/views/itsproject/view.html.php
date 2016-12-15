@@ -33,6 +33,8 @@ class ITSProjectViewITSProject extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
+		
+		
 		// Get the Data
 		$this->form = $this->get('Form');
 		$this->item = $this->get('Item');
@@ -53,7 +55,7 @@ class ITSProjectViewITSProject extends JViewLegacy
 		parent::display($tpl);
 		
 		// Set the document
-		$this->setDocument();
+		
 	}
  
 	/**
@@ -89,18 +91,7 @@ class ITSProjectViewITSProject extends JViewLegacy
 		);
 	}
 	
-	/**
-	 * Method to set up the document properties
-	 *
-	 * @return void
-	 */
-	protected function setDocument() 
-	{
-		$isNew = ($this->item->id < 1);
-		$document = JFactory::getDocument();
-		$document->setTitle($isNew ? JText::_('COM_ITSPROJECT_ITSPROJECT_CREATING') :
-                JText::_('COM_ITSPROJECT_ITSPROJECT_EDITING'));
-	}
+	
 	
 	
 }

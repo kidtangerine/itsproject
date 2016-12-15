@@ -29,6 +29,9 @@ class ITSProjectControllerITSProjects extends JControllerAdmin
 	 */
 	public function getModel($name = 'ITSProject', $prefix = 'ITSProjectModel', $config = array('ignore_request' => true))
 	{
+		
+		
+		
 		$model = parent::getModel($name, $prefix, $config);
  
 		return $model;

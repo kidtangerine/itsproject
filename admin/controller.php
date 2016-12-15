@@ -26,4 +26,6 @@ class ITSProjectController extends JControllerLegacy
 	 * @since 12.2
 	 */
 	protected $default_view = 'itsprojects';
+	
+	
 }

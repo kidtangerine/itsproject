@@ -14,7 +14,9 @@ defined('_JEXEC') or die('Restricted access');
 $controller = JControllerLegacy::getInstance('ITSProject');
  
 // Perform the Request task
+$input = JFactory::getApplication()->input;
 $controller->execute(JFactory::getApplication()->input->get('task'));
  
 // Redirect if set by the controller
 $controller->redirect();
+
